@@ -19,7 +19,9 @@ const connectionString = process.env.DATABASE_URL || 'postgresql://codexx:pg123@
 
 const pool = new Pool({
     connectionString,
-    ssl: useSSL
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 const app = express();

@@ -67,7 +67,8 @@ app.get("/", async function (req, res) {
 
 
 app.post('/reg_numbers', async (req, res) => {
-    const numPlate = req.body.regNo;
+    const numPlate = req.body.regNo.trim().toUpperCase();
+    // var registration = regNum.trim().toUpperCase()
     var type = /^((CJ|CL|CA)\s([0-9]){3}\s([0-9]){3})$/;
     var type2 = /^(CJ|CL|CA)\s[0-9]{5}$/;
     var letsValidate = type.test(numPlate);

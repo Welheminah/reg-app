@@ -7,7 +7,7 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const regPlate = require('./reg-factory');
-// const routes = reqire('./routes');
+// const myRoutes = require('./routes');
 
 let useSSL = false;
 let local = process.env.LOCAL || false;
@@ -27,6 +27,7 @@ const pool = new Pool({
 const app = express();
 
 const regInstance = regPlate(pool);
+// const routes = myRoutes(regInstance);
 
 app.use(session({
     secret: "<add a secret string here>",
@@ -55,47 +56,65 @@ app.use(bodyParser.json())
 app.use(express.static('public'));
 
 
+
 app.get("/", async function (req, res) {
     const regList = await regInstance.getReg()
-    res.render("index",{
+    res.render("index", {
         regNumbers: regList
     });
 });
 
 
 
-app.post('/reg_numbers', async(req, res) => {
-    
+app.post('/reg_numbers', async (req, res) => {
     const numPlate = req.body.regNo;
-   await regInstance.addReg(numPlate)
-    console.log(numPlate);
+    var type = /^((CJ|CL|CA)\s([0-9]){3}\s([0-9]){3})$/;
+    var type2 = /^(CJ|CL|CA)\s[0-9]{5}$/;
+    var letsValidate = type.test(numPlate);
+    var letsValidate2 = type2.test(numPlate);
+    if (numPlate === ""){
+        req.flash('message', 'The registration cannot be empty');
+        res.redirect('/')
+    }
+    if(letsValidate === true) {
+        await regInstance.addReg(numPlate)
+    }
+    else if(letsValidate2 === true){
+        await regInstance.addReg(numPlate)
+    }
+    else{
+        req.flash('message', 'Invalid regitration, please enter a valid registration eg CA 123 045')
+    }
+    
+    
+    // console.log(numPlate);
     res.redirect('/');
 });
 
-app.post('/filteredReg', async(req, res) => {
+app.post('/filteredReg', async (req, res) => {
     const regs = req.body.town;
     const regFilter = await regInstance.filterReg(regs);
     console.log(regFilter);
-    res.render('index',{
+    res.render('index', {
         regFilter
     })
 });
 
-app.post('/reset', async(req, res) => {
+app.post('/reset', async (req, res) => {
     await regInstance.clear()
 
     res.redirect('/');
 });
 
 app.get('/error-msg', function (req, res) {
-    req.flash('info', 'Flash Message Added');
+    req.flash('message', 'Flash Message Added');
     res.redirect('/');
 });
 
 
 
 // app.post('/reg_numbers', (req, res) => {
-    
+
 //     res.redirect('/');
 // });
 

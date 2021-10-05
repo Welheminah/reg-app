@@ -71,7 +71,7 @@ module.exports = function regPlate(pool) {
     }
     
    async function filterReg(radioBtn){
-        var filteredReg = [];
+    
         var registrations = await getReg();
 
         if(radioBtn === "ALL"){

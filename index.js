@@ -72,7 +72,14 @@ app.post('/reg_numbers', async(req, res) => {
     res.redirect('/');
 });
 
-
+app.post('/filteredReg', async(req, res) => {
+    const regs = req.body.town;
+    const regFilter = await regInstance.filterReg(regs);
+    console.log(regFilter);
+    res.render('index',{
+        regFilter
+    })
+});
 
 app.post('/reset', async(req, res) => {
     await regInstance.clear()

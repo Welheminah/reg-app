@@ -24,7 +24,8 @@
    </form>
 
 
-    <br>
+    <br> 
+    <form action="/filteredReg" method="POST">
     <label class="container">Cape Town
       <input type="radio"  name="town" value="CA">
       <span class="checkmark"></span>
@@ -42,10 +43,11 @@
       <span class="checkmark"></span>
     </label> <br>
     <br>
+    <button type="submit" class="show">SHOW</button></form><br>
     <div class="btn-grp">
-      <form action="" method="post"><button type="submit" class="show">SHOW</button></form><br>
+     
 
-      <form action="/reset" method="post"><button type="submit" class="clear">CLEAR</button></form> 
+      <form action="/reset" method="POST"><button type="submit" class="clear">CLEAR</button></form> 
     </div>
 
   </div><br>
@@ -57,7 +59,11 @@
     {{/each}}
   </ul>
 
-  <ul class="dispayFilter"></ul>
+  <ul class="dispayFilter">
+    {{#each regFilter}}
+    <span class="numberPlate">{{reg_no}}</span>
+    {{/each}}
+  </ul>
 
 
 </body>

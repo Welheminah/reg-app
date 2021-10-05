@@ -113,7 +113,7 @@ input[type=text], select {
     position: absolute;
     left: 59%;
 }
-.btn-grp .show{
+.show{
   padding: 15px 20px;
     background:#78909c;
     border: 1px solid  #78909c;

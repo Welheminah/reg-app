@@ -9,7 +9,7 @@ env:
 before_script:
   - npm install
   - psql -c 'create database  my_reg_test;' -U postgres
-  - psql -U postgres -d my_reg_test -a -f reg-database_test.sql
+  - psql -U postgres -d my_reg_test -a -f reg-database.sql
 
 services:
   - postgresql

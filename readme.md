@@ -1,0 +1,1 @@
+[![Build Status](https://app.travis-ci.com/Welheminah/reg-app.svg?branch=main)](https://app.travis-ci.com/Welheminah/reg-app)

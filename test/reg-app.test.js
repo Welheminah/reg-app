@@ -19,6 +19,7 @@ describe('The registration numbers web app', function(){
         
     });
 
+    
     it('should be to take the reg number entered and print it out', async function(){
         
         
@@ -56,6 +57,22 @@ describe('The registration numbers web app', function(){
         var set = theGetReg[0].reg_no;
         assert.equal('CJ 123 745', set);
         
+
+    });
+
+    it('should not add the duplicate registration number already exist in the database', async function(){
+        
+        
+        let regFunction = regPlate(pool);
+        await regFunction.addReg('CA 12345')
+        await regFunction.addReg('CA 12345')
+        await regFunction.addReg('CA 12345')
+        await regFunction.addReg('CA 12345')
+
+        var theGetReg = await regFunction.getReg();
+        var set = theGetReg[0].reg_no;
+        assert.equal('CA 12345', set);
+        // assert.deepEqual([ { id: 16, reg_no: 'CA 12345', towns_id: 1 } ], theGetReg)
 
     });
 

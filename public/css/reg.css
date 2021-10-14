@@ -192,9 +192,19 @@ main {
 
 @media (max-width: 800px) {
 
+  .numberPlate{
+    margin-left: 75px;
+    /* padding-left: 10px; */
+    display: grid;
+    width: 100px;
+    align-items: center;
+  }
+
     .display{
       /* float: right; */
-      display: inline-flexbox;
+      /* display: inline-flexbox; */
+      /* display: flexbox; */
+      margin: 10px;
     }
     .main input[type=text], select {
       margin: 10px 0;

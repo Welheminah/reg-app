@@ -17,45 +17,54 @@
     {{#if messages}}
     <p class="alert">{{messages}}</p>
     {{/if}}
-    <p>The registrations that can be taken are registration number from: Cape Town(CA), Paarl (CJ) & Stellenbosch(CL) only. <br>Please enter a Registration No with this format <span class="five">CA 12345 </span> or <span class="six">CA 123
+    <p>The registrations that can be taken are registration number from: Cape Town(CA), Paarl (CJ) & Stellenbosch(CL)
+      only. <br>Please enter a Registration No with this format <span class="five">CA 12345 </span> or <span
+        class="six">CA 123
         123</span> </p>
-   <form action="/reg_numbers" method="POST">
-    <label for="reg">Registration No:</label>
-    <input type="text" id="reg" name="regNo" placeholder="CA 12345 or CA 123 456" class="regNo"><br>
-    <button type="submit" class="theButton">ADD</button><br>
-   </form>
+    <form action="/reg_numbers" method="POST">
+      <label for="reg">Registration No:</label>
+      <input type="text" id="reg" name="regNo" placeholder="CA 12345 or CA 123 456" class="regNo"><br>
+      <button type="submit" class="theButton">ADD</button><br>
+    </form>
 
 
-    <br> 
-    <form action="/filteredReg" method="POST">
-    <label class="container">Cape Town
-      <input type="radio"  name="town" value="CA">
-      <span class="checkmark"></span>
-    </label>
-    <label class="container">Paarl
-      <input type="radio" name="town" value="CJ">
-      <span class="checkmark"></span>
-    </label>
-    <label class="container">Stellenbosch
-      <input type="radio" name="town" value="CL">
-      <span class="checkmark"></span>
-    </label>
-    <label class="container">All
-      <input type="radio" name="town" value="ALL">
-      <span class="checkmark"></span>
-    </label> <br>
     <br>
-    <button type="submit" class="show">SHOW</button></form><br>
-    <div class="btn-grp">
-     
+    <form action="/filteredReg" method="POST">
+      <div>
+        <label class="container">Cape Town
+          <input type="radio" name="town" value="CA">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">Paarl
+          <input type="radio" name="town" value="CJ">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">Stellenbosch
+          <input type="radio" name="town" value="CL">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">All
+          <input type="radio" name="town" value="ALL">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="shitf">
+        <button type="submit" class="show">SHOW</button>
+      </div>
+    </form>
+    <form action="/reset" class="shift" method="POST">
+      <span>
 
-      <form action="/reset" method="POST"><button type="submit" class="clear">CLEAR</button></form> 
-    </div>
+
+        <button type="submit" class="clear">CLEAR</button>
+      </span>
+    </form>
+
 
   </div><br>
 
   <ul class="dispay">
-    
+
     {{#each regNumbers}}
     <span class="numberPlate">{{reg_no}}</span>
     {{/each}}
@@ -68,6 +77,11 @@
   </ul>
 
 
+
+  <script>
+    var alertElement = document.querySelector(".alert");
+    setTimeout(function () { alertElement.innerHTML = "" }, 3000);
+  </script>
 </body>
 
 </html>

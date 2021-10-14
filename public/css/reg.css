@@ -120,18 +120,28 @@ input[type=text], select {
     color: white;
     cursor: pointer;
     font-size: 18px;
-    margin: -20px;
+    
    
 }
-.btn-grp .clear{
+
+.shitf button {
+  margin-left: -110px;
+  margin-top: 10px;
+}
+ .clear{
   padding: 15px 20px;
     background:#78909c;
     border: 1px solid  #78909c;
     color: white;
     cursor: pointer;
     font-size: 18px;
-    margin: -5px;
+    /* top: -200px; */
+    margin-left: 190px;
    
+}
+
+.shift {
+  margin-top: -53px;
 }
 
 .btn {

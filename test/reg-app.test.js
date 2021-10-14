@@ -27,7 +27,6 @@ describe('The registration numbers web app', function(){
 
         var theGetReg = await regFunction.getReg();
         var set = theGetReg[0].reg_no;
-       console.log(theGetReg);
         assert.equal('CA 12345', set);
         // assert.deepEqual([ { id: 16, reg_no: 'CA 12345', towns_id: 1 } ], theGetReg)
 
@@ -41,7 +40,6 @@ describe('The registration numbers web app', function(){
 
         var theGetReg = await regFunction.getReg();
         var set = theGetReg[0].reg_no;
-       console.log(theGetReg);
         assert.equal('CL 123 123', set);
 
     });
@@ -56,7 +54,6 @@ describe('The registration numbers web app', function(){
 
         var theGetReg = await regFunction.getReg();
         var set = theGetReg[0].reg_no;
-       console.log(theGetReg);
         assert.equal('CJ 123 745', set);
         
 
@@ -69,9 +66,8 @@ describe('The registration numbers web app', function(){
         await regFunction.addReg('CA 12345')
 
         var theGetId = await regFunction.getReg();
+        
         var getId = theGetId[0].towns_id;
-
-        console.log(getId);
         assert.equal(1, getId);
         
 
@@ -84,8 +80,6 @@ describe('The registration numbers web app', function(){
 
         var theGetId = await regFunction.getReg();
         var getId = theGetId[0].towns_id;
-
-        console.log(getId);
         assert.equal(3, getId);
         
 
@@ -99,8 +93,6 @@ describe('The registration numbers web app', function(){
 
         var theGetId = await regFunction.getReg();
         var getId = theGetId[0].towns_id;
-
-        console.log(getId);
         assert.equal(2, getId);
         
 
@@ -122,19 +114,7 @@ describe('The registration numbers web app', function(){
         
 
     });
-
-    // it('', async function() {
-    //     let regFunction = regPlate(pool);
-
-    //     await regFunction.addTown('Cape Town', 'CA');
-
-    //     assert.equal('Cape Town', 'CA',await getReg())
-
-    // });
-
-    
-
-    it('should be able to filter by the town selected by the user', async function(){
+    it('should be able to filter by the town selected by the user, return all the registrations from Cape Town if the regNo starts with CA', async function(){
 
         let regFunction = regPlate(pool);
 
@@ -145,12 +125,11 @@ describe('The registration numbers web app', function(){
 
         var filter = await regFunction.filterReg('CA')
         var filterSet = filter[0].towns_id;
-        console.log(filterSet)
         assert.equal(1, filterSet)
 
     });
 
-    it('should be able to filter by the town selected by the user', async function(){
+    it('should be able to filter by the town selected by the user,return all the registrations from Stellenbosch if the regNo starts with CL', async function(){
 
         let regFunction = regPlate(pool);
 
@@ -161,7 +140,7 @@ describe('The registration numbers web app', function(){
 
         var filter = await regFunction.filterReg('CL')
         var filterSet = filter[0].towns_id;
-        console.log(filterSet)
+    
         assert.equal(3, filterSet)
 
     });

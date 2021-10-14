@@ -25,7 +25,7 @@ const pool = new Pool({
 });
 
 const app = express();
-console.log(myRoutes)
+
 const regInstance = regPlate(pool);
 const routes = myRoutes(regInstance);
 
@@ -54,7 +54,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.use(express.static('public'));
-console.log(routes);
+
 
 app.get("/", routes.homeIndex);
 app.post('/reg_numbers', routes.theRegNo);

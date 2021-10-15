@@ -22,18 +22,18 @@ module.exports = function regPlate(pool) {
 
 
     async function getReg() {
-        var plates = await pool.query('SELECT * FROM the_reg_numbers');
+        var plates = await pool.query("SELECT * FROM the_reg_numbers");
         return plates.rows;
     };
 
 
     async function addTown(town, regMark) {
-        await pool.query('INSERT INTO the_towns(town, regMark) VALUES ($1, $2)', [town, regMark])
+        await pool.query("INSERT INTO the_towns(town, regMark) VALUES ($1, $2)", [town, regMark])
     };
 
 
     async function getRegistrationNumbers(townId) {
-        var getAllReg = await pool.query('SELECT * FROM the_reg_numbers WHERE towns_id = $1', [townId]);
+        var getAllReg = await pool.query("SELECT * FROM the_reg_numbers WHERE towns_id = $1", [townId]);
         return getAllReg.rows;
 
     };
@@ -55,7 +55,7 @@ module.exports = function regPlate(pool) {
 
 
     async function clear() {
-        reset = await pool.query('DELETE FROM the_reg_numbers');
+        reset = await pool.query("DELETE FROM the_reg_numbers");
         return reset;
     };
 

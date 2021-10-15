@@ -16,11 +16,13 @@ module.exports =  function (regInstance) {
         var type3 =  /^((CJ|CL|CA)\-([0-9]){3}\-([0-9]){3})$/;
         var type4 =  /^(CJ|CL|CA)\-[0-9]{6}$/;
         var type5 =  /^(CJ|CL|CA)\s[0-9]{6}$/;
+        
         var letsValidate = type.test(numPlate);
         var letsValidate2 = type2.test(numPlate);
         var letsValidate3 = type3.test(numPlate);
         var letsValidate4 = type4.test(numPlate);
         var letsValidate5 = type5.test(numPlate);
+        
         if (numPlate === "") {
             req.flash('error', 'The registration cannot be empty');
             res.redirect('/')

@@ -56,7 +56,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'));
 
 
-app.get("/", routes.homeIndex);
+app.get('/', routes.homeIndex);
 app.post('/reg_numbers', routes.theRegNo);
 app.post('/filteredReg', routes.letFilter);
 app.post('/reset', routes.theReset);

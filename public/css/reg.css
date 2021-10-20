@@ -124,10 +124,10 @@ input[type=text], select {
    
 }
 
-.shitf button {
+/* .shitf button {
   margin-left: -110px;
   margin-top: 10px;
-}
+} */
  .clear{
   padding: 15px 20px;
     background:#78909c;
@@ -136,13 +136,13 @@ input[type=text], select {
     cursor: pointer;
     font-size: 18px;
     /* top: -200px; */
-    margin-left: 190px;
+    /* margin-left: 190px; */
    
 }
 
-.shift {
+/* .theClear {
   margin-top: -90px;
-}
+} */
 
 .btn {
   padding: 10px 20px;
